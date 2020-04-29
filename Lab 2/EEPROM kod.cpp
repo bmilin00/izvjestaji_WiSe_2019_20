@@ -35,7 +35,8 @@ void loop() {
  buttonState = 0;
 }
 
-/*   
+/*  Nodogradite postojeći kod na način da omogućite promjenu stanja LED-ice pritiskom na tipku. 
+
 void loop() {
  int buttonState = digitalRead(buttonPin);
  if (buttonState > 0){
