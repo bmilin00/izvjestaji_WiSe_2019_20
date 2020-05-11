@@ -6,7 +6,7 @@
 
 SENSORS sensor;
 RADIO radioNRF;
-
+bool uspjeh;
 SensorData dataToSend;
 StateType state = READ_SERIAL;
 
@@ -19,10 +19,12 @@ void setup()
   ovdje pozovite funkciju koja instancira radio modul
   #########################
   */
+ radioNRF.nRF_init();
 }
 
 void loop()
 {
+
   switch (state)
   {
   case READ_SERIAL:
@@ -39,7 +41,8 @@ void loop()
     ovdje pozovite funkciju "RF_send" za slanje podataka preko radio kanala te rezultat pohranite u bool varijablu
     #########################
     */
-
+   
+   uspjeh=radioNRF.RF_send(dataToSend);
     state = RADIO_RX;
 
     break;
@@ -48,7 +51,7 @@ void loop()
     ovdje pozovite funkciju "RF_receive" koja ispisuje poruku je li kom preko radija bila uspješna
     #########################
     */
-
+  radioNRF.RF_receive(uspjeh);
     state = SLEEP_STATE;
 
     break;
