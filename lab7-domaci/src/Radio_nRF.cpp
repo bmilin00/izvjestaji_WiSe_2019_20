@@ -19,15 +19,26 @@ void RADIO::nRF_init()
 }
 
 bool RADIO::RF_send(struct SensorData sensorData)
-{
+{   bool uspjeh;
+
+    uspjeh=radio.write(&sensorData,sizeof(sensorData));
+
     //!!!your code goes here!!!
     /* ova funkcija šalje podatke preko radio kanala i vraća bool vrijednost ovisno o tome je li komunikacija bila uspješna.
     Trenutno vraća uvijek false, ali je potrebno zamijeniti false sa bool rezultatom radio komunikacije. */
-    return false;
+    return uspjeh;
 }
 
 void RADIO::RF_receive(bool rslt)
 {
     //!!!your code goes here!!!
     /* ova funkcija samo ispisuje je li rezultat komunikacije bio uspješan ili ne, odnosno je li primi acknowledgment ili ne */
+
+    if(rslt==true){
+
+        Serial.print("PRIMLJENO");
+    }
+    else {
+        Serial.print("GRESKA");
+    }
 }
