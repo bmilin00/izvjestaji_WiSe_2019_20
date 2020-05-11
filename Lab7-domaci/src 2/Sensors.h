@@ -20,5 +20,5 @@ public:
         float readTemp();
         uint16_t readLight();
 };
-
+//end
 #endif
